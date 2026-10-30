@@ -21,3 +21,10 @@
   fijo.
 - La base de datos es local. Si se desinstala la aplicacion, los datos se
   pierden y se vuelven a cargar los datos de demostracion.
+- El APK declara los permisos `INTERNET` y `ACCESS_NETWORK_STATE`. No los usa
+  ninguna operacion de la aplicacion: los agrega una dependencia transitiva del
+  lector de codigos (ML Kit, via `com.google.android.datatransport`). El modelo
+  de lectura viaja dentro del APK, por lo que el escaneo funciona sin conexion.
+- El escaneo no se pudo probar en un dispositivo fisico desde el entorno de
+  compilacion. La lectura se valido con las pruebas del normalizador de codigos
+  y la busqueda manual. La prueba en dispositivo queda pendiente.
