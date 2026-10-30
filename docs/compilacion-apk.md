@@ -58,3 +58,22 @@ una tienda se debe crear una clave de liberacion y configurarla en
 
 El proyecto compila sin errores en Android. El APK generado se puede instalar en
 cualquier dispositivo Android 7.0 o superior.
+
+Compilacion verificada:
+
+```
+Running Gradle task 'assembleRelease'...  193.5s
+Built build/app/outputs/flutter-apk/app-release.apk (70.8MB)
+```
+
+Datos del APK entregado:
+
+```
+package: com.inventario.app
+versionName: 1.0.0
+application-label: INVENTARIO
+targetSdkVersion: 36
+```
+
+El archivo final esta en `dist/inventario-1.0.0.apk`, con su suma de verificacion
+en `dist/inventario-1.0.0.apk.sha256`.
