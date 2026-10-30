@@ -5,7 +5,7 @@
 - Flutter 3.47 o superior.
 - Android SDK 36 con las herramientas de compilacion.
 - Java 17.
-- Android NDK 27.0.12077973 (el proyecto lo fija en `android/app/build.gradle.kts`).
+- Android NDK 28.2.13676358 (el proyecto lo fija en `android/app/build.gradle.kts`).
 
 ## Configuracion de Android
 
@@ -53,6 +53,57 @@ La configuracion de ejemplo firma con las claves de depuracion para que
 `flutter run --release` funcione sin configuracion adicional. Para publicar en
 una tienda se debe crear una clave de liberacion y configurarla en
 `android/app/build.gradle.kts`.
+
+## Problemas conocidos al compilar
+
+### El NDK no se instala
+
+Sintoma:
+
+```
+Package ndk not found.
+Package 28.2.13676358 not found.
+> Android sdkmanager did not install NDK 28.2.13676358
+```
+
+Causa: el NDK 28 lo exige `path_provider_android`, que compila codigo nativo con
+`jni`. Si el NDK no esta instalado, la compilacion falla.
+
+Solucion 1, instalar el NDK:
+
+```
+sdkmanager --install "ndk;28.2.13676358"
+```
+
+En Windows, si `sdkmanager` no esta en el PATH, se llama por ruta completa:
+
+```
+%LOCALAPPDATA%\Android\sdk\cmdline-tools\latest\bin\sdkmanager.bat --install "ndk;28.2.13676358"
+```
+
+Solucion 2, instalar el NDK a mano si `sdkmanager` falla:
+
+1. Descargar el paquete oficial:
+
+   ```
+   https://dl.google.com/android/repository/android-ndk-r28c-windows.zip
+   ```
+
+2. Descomprimirlo en la carpeta de NDK del SDK. La carpeta debe quedar con el
+   nombre de la version:
+
+   ```
+   %LOCALAPPDATA%\Android\sdk\ndk\28.2.13676358
+   ```
+
+3. Aceptar las licencias:
+
+   ```
+   flutter doctor --android-licenses
+   ```
+
+Con el NDK instalado, `flutter run` y `flutter build apk --release` vuelven a
+funcionar.
 
 ## Resultado
 

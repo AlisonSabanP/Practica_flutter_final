@@ -12,7 +12,7 @@ conexion a internet. Construida con Flutter y Dart.
 
 - Flutter 3.47 o superior (canal stable).
 - Dart 3.13 o superior.
-- Android SDK 36 y Java 17 para compilar el APK.
+- Android SDK 36, NDK 28.2.13676358 y Java 17 para compilar el APK.
 - Un dispositivo o emulador Android 7.0 (API 24) o superior para ejecutar.
 
 ## Clonar el repositorio
@@ -27,6 +27,14 @@ cd inventario
 ```bash
 flutter pub get
 ```
+
+Para compilar en Android hace falta el NDK 28.2.13676358. Si no esta instalado:
+
+```bash
+sdkmanager --install "ndk;28.2.13676358"
+```
+
+En Windows: `%LOCALAPPDATA%\Android\sdk\cmdline-tools\latest\bin\sdkmanager.bat --install "ndk;28.2.13676358"`
 
 ## Ejecutar la aplicacion
 

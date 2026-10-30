@@ -7,7 +7,9 @@ plugins {
 android {
     namespace = "com.inventario.app"
     compileSdk = 36
-    ndkVersion = "27.0.12077973"
+    // path_provider_android (2.1.6) compila codigo nativo con jni, que exige
+    // el NDK 28. Fijarlo evita que Gradle intente resolver otra version.
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
